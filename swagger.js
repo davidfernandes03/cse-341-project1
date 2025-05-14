@@ -5,8 +5,12 @@ const doc = {
         title: 'Contacts API',
         description: 'API for managing contacts (CSE 341 | BYU-I)'
     },
-    host: 'localhost:8080',
-    schemes: ['http'],
+    host: process.env.NODE_ENV === 'production'
+        ? 'cse-341-project1-w4pz.onrender.com'
+        : 'localhost:8080',
+    schemes: process.env.NODE_ENV === 'production'
+        ? ['https']
+        : ['http'],
     definitions: {
         Contact: {
             firstName: 'Steve',
